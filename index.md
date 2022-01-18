@@ -14,9 +14,9 @@ humantime: "12:45 pm - 4:30 pm (UTC+0)"    # human-readable times for the worksh
 startdate: 2022-01-25      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2022-02-02        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 instructor: ["Matthew Bluteau"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: ["Kristian Zarebski", "Sam Mason"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+helper: ["Kristian Zarebski", "Sam Mason", "John Nonweiler"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["matthew.bluteau@ukaea.uk"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
-collaborative_notes:  # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
+collaborative_notes: "https://codimd.carpentries.org/VSjpZqwHReqCsK_gHjGNHQ?both" # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
 eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
 
@@ -283,6 +283,104 @@ Everyone who participates in Carpentries activities is required to conform to th
 </p>
 <hr/>
 
+{% comment %}
+SETUP
+
+Delete irrelevant sections from the setup instructions.  Each
+section is inside a 'div' without any classes to make the beginning
+and end easier to find.
+
+This is the other place where people frequently make mistakes, so
+please preview your site before committing, and make sure to run
+'tools/check' as well.
+{% endcomment %}
+
+<h2 id="setup">Setup</h2>
+
+<p>
+  To participate in this
+  {% if site.carpentry == "swc" %}
+  Software Carpentry
+  {% elsif site.carpentry == "dc" %}
+  Data Carpentry
+  {% elsif site.carpentry == "lc" %}
+  Library Carpentry
+  {% endif %}
+  workshop,
+  you will need access to software as described below.
+  In addition, you will need an up-to-date web browser.
+</p>
+
+{% if site.carpentry == "swc" %}
+{% include swc/setup.html %}
+{% elsif site.carpentry == "dc" %}
+{% include dc/setup.html %}
+{% elsif site.carpentry == "lc" %}
+{% include lc/setup.html %}
+{% elsif site.carpentry == "incubator" %}
+First off, please check the "Setup" page of
+[the lesson site]({{ site.incubator_lesson_site }}) for instructions to follow
+to obtain the software and data you will need to follow the lesson.
+
+>## Some notes for UKAEA Windows users
+> 
+> - Git for Windows can be installed using the Software Center/Application Catalog.
+> - You can download and run a standard Python installer from https://www.python.org/downloads/windows/, but should ensure that the option to install for all users is not selected (to avoid the need for admin privileges).
+> - The PyCharm installer can be run using your standard login (and without an admin account).  It is important to choose an installation path where you have write permissions (i.e. not the default path). The PyCharm installer probably won't run perfectly without admin rights, but our testing has shown that it does yield a functional application. In particular, you might notice it fails to create a shortcut from the start menu. 
+> - If you already have Windows Subsytem for Linux (WSL), then there is an alternate route.
+>   - Use `git` and `bash` from within the WSL terminal.
+>   - Ensure you have [X-forwarding set up](https://intranet.ukaea.uk/software/guides/wsl2.html#enable-x-forwarding). These instructions require a VPN connection.
+>   - Install PyCharm with the following commands from inside WSL terminal:
+>   ```bash
+>   wget https://download.jetbrains.com/python/pycharm-community-2021.3.1.tar.gz
+>   sudo tar xzf pycharm-*.tar.gz -C /opt/
+>   alias pycharm=/opt/pycharm-community-2021.3.1/bin/pycharm.sh  # Put this into .bashrc
+>   pycharm
+>   ```
+{: .callout}
+
+>## A note about IDEs
+
+The course recommends and provides instructions for using PyCharm as an
+Integrated Development Environment (IDE). However, because this is an
+intermediate-level course, we expect that a number of participants will already
+have some experience using an IDE or comparable advanced code editor (e.g. Vim,
+Emacs). You are welcome to use your editor of choice for the course if you are
+confident that you can achieve similar functionality that is described for
+PyCharm, but be warned that we are unlikely to be able to support you if
+something goes wrong. At least two of the instructors/helpers use VSCode, so we
+will be able to support you if you choose that IDE. Regardless of your decision,
+we recommend that you still install PyCharm as a fallback.
+{: .callout}
+
+{% endif %}
+
+{% comment %}
+For online workshops, the section below provides:
+- installation instructions for the Zoom client
+- recommendations for setting up Learners' workspace so they can follow along
+  the instructions and the videoconferencing
+
+If you do not use Zoom for your online workshop, edit the file
+`_includes/install_instructions/videoconferencing.html`
+to include the relevant installation instrucctions.
+{% endcomment %}
+{% if online != "false" %}
+{% include install_instructions/videoconferencing.html %}
+{% endif %}
+
+{% comment %}
+These are the installation instructions for the tools used
+during the workshop.
+{% endcomment %}
+
+<p>
+  We maintain a list of common issues that occur during installation as a reference for instructors
+  that may be useful on the
+  <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
+</p>
+
+<hr/>
 
 {% comment %}
 Collaborative Notes
@@ -375,98 +473,4 @@ The lesson taught in this workshop is being piloted and a precise schedule is ye
 
 <hr/>
 
-
-{% comment %}
-SETUP
-
-Delete irrelevant sections from the setup instructions.  Each
-section is inside a 'div' without any classes to make the beginning
-and end easier to find.
-
-This is the other place where people frequently make mistakes, so
-please preview your site before committing, and make sure to run
-'tools/check' as well.
-{% endcomment %}
-
-<h2 id="setup">Setup</h2>
-
-<p>
-  To participate in this
-  {% if site.carpentry == "swc" %}
-  Software Carpentry
-  {% elsif site.carpentry == "dc" %}
-  Data Carpentry
-  {% elsif site.carpentry == "lc" %}
-  Library Carpentry
-  {% endif %}
-  workshop,
-  you will need access to software as described below.
-  In addition, you will need an up-to-date web browser.
-</p>
-
-{% if site.carpentry == "swc" %}
-{% include swc/setup.html %}
-{% elsif site.carpentry == "dc" %}
-{% include dc/setup.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/setup.html %}
-{% elsif site.carpentry == "incubator" %}
-First off, please check the "Setup" page of
-[the lesson site]({{ site.incubator_lesson_site }}) for instructions to follow
-to obtain the software and data you will need to follow the lesson.
-
-### Some notes for UKAEA Windows users
-
-- Git for Windows can be installed using the Software Center/Application Catalog.
-- You can download and run a standard Python installer from https://www.python.org/downloads/windows/, but should ensure that the option to install for all users is not selected (to avoid the need for admin privileges).
-- The PyCharm installer can be run using your standard login (and without an admin account).  It is important to choose an installation path where you have write permissions (i.e. not the default path). The PyCharm installer probably won't run perfectly without admin rights, but our testing has shown that it does yield a functional application. In particular, you might notice it fails to create a shortcut from the start menu. 
-- If you already have Windows Subsytem for Linux (WSL), then there is an alternate route.
-  - Use `git` and `bash` from within the WSL terminal.
-  - Ensure you have [X-forwarding set up](https://intranet.ukaea.uk/software/guides/wsl2.html#enable-x-forwarding). These instructions require a VPN connection.
-  - Install PyCharm with the following commands from inside WSL terminal:
-  ```bash
-  wget https://download.jetbrains.com/python/pycharm-community-2021.3.1.tar.gz
-  sudo tar xzf pycharm-*.tar.gz -C /opt/
-  alias pycharm=/opt/pycharm-community-2021.3.1/bin/pycharm.sh  # Put this into .bashrc
-  pycharm
-  ```
-
-### A note about IDEs
-
-The course recommends and provides instructions for using PyCharm as an
-Integrated Development Environment (IDE). However, because this is an
-intermediate-level course, we expect that a number of participants will already
-have some experience using an IDE or comparable advanced code editor (e.g. Vim,
-Emacs). You are welcome to use your editor of choice for the course if you are
-confident that you can achieve similar functionality that is described for
-PyCharm. At least two of the instructors/helpers use VSCode, so we will be able
-to support you if you choose that IDE. Regardless of your decision, we recommend
-that you still install PyCharm as a fallback.
-
-{% endif %}
-
-{% comment %}
-For online workshops, the section below provides:
-- installation instructions for the Zoom client
-- recommendations for setting up Learners' workspace so they can follow along
-  the instructions and the videoconferencing
-
-If you do not use Zoom for your online workshop, edit the file
-`_includes/install_instructions/videoconferencing.html`
-to include the relevant installation instrucctions.
-{% endcomment %}
-{% if online != "false" %}
-{% include install_instructions/videoconferencing.html %}
-{% endif %}
-
-{% comment %}
-These are the installation instructions for the tools used
-during the workshop.
-{% endcomment %}
-
-<p>
-  We maintain a list of common issues that occur during installation as a reference for instructors
-  that may be useful on the
-  <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
-</p>
 
