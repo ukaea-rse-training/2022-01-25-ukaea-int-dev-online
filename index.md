@@ -340,17 +340,23 @@ to obtain the software and data you will need to follow the lesson.
 {: .callout}
 
 >## A note about IDEs
-
-The course recommends and provides instructions for using PyCharm as an
-Integrated Development Environment (IDE). However, because this is an
-intermediate-level course, we expect that a number of participants will already
-have some experience using an IDE or comparable advanced code editor (e.g. Vim,
-Emacs). You are welcome to use your editor of choice for the course if you are
-confident that you can achieve similar functionality that is described for
-PyCharm, but be warned that we are unlikely to be able to support you if
-something goes wrong. At least two of the instructors/helpers use VSCode, so we
-will be able to support you if you choose that IDE. Regardless of your decision,
-we recommend that you still install PyCharm as a fallback.
+> 
+> The course recommends and provides instructions for using PyCharm as an
+> Integrated Development Environment (IDE). However, because this is an
+> intermediate-level course, we expect that a number of participants will already
+> have some experience using an IDE or comparable advanced code editor (e.g. Vim,
+> Emacs). You are welcome to use your editor of choice for the course if you are
+> confident that you can achieve similar functionality that is described for
+> PyCharm, but be warned that we are unlikely to be able to support you if
+> something goes wrong. At least two of the instructors/helpers use VSCode, so we
+> will be able to support you if you choose that IDE. Regardless of your decision,
+> we recommend that you still install PyCharm as a fallback. What your IDE setup
+> needs to achieve:
+> 
+> - Syntax highlighting, indentation, and autocompletion
+> - Recognition of virtual environments and setting the correct Python interpreter
+> - Running the Python debugger from the IDE and setting breakpoints at specific lines
+> - Integration with pytest and the ability to launch individual tests from the editor
 {: .callout}
 
 {% endif %}
