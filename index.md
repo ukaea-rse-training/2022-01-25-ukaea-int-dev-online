@@ -414,6 +414,35 @@ please preview your site before committing, and make sure to run
 First off, please check the "Setup" page of
 [the lesson site]({{ site.incubator_lesson_site }}) for instructions to follow
 to obtain the software and data you will need to follow the lesson.
+
+### Some notes for UKAEA Windows users
+
+- Git for Windows can be installed using the Software Center/Application Catalog.
+- You can download and run a standard Python installer from https://www.python.org/downloads/windows/, but should ensure that the option to install for all users is not selected (to avoid the need for admin privileges).
+- The PyCharm installer can be run using your standard login (and without an admin account).  It is important to choose an installation path where you have write permissions (i.e. not the default path). The PyCharm installer probably won't run perfectly without admin rights, but our testing has shown that it does yield a functional application. In particular, you might notice it fails to create a shortcut from the start menu. 
+- If you already have Windows Subsytem for Linux (WSL), then there is an alternate route.
+  - Use `git` and `bash` from within the WSL terminal.
+  - Ensure you have [X-forwarding set up](https://intranet.ukaea.uk/software/guides/wsl2.html#enable-x-forwarding). These instructions require a VPN connection.
+  - Install PyCharm with the following commands from inside WSL terminal:
+  ```bash
+  wget https://download.jetbrains.com/python/pycharm-community-2021.3.1.tar.gz
+  sudo tar xzf pycharm-*.tar.gz -C /opt/
+  alias pycharm=/opt/pycharm-community-2021.3.1/bin/pycharm.sh  # Put this into .bashrc
+  pycharm
+  ```
+
+### A note about IDEs
+
+The course recommends and provides instructions for using PyCharm as an
+Integrated Development Environment (IDE). However, because this is an
+intermediate-level course, we expect that a number of participants will already
+have some experience using an IDE or comparable advanced code editor (e.g. Vim,
+Emacs). You are welcome to use your editor of choice for the course if you are
+confident that you can achieve similar functionality that is described for
+PyCharm. At least two of the instructors/helpers use VSCode, so we will be able
+to support you if you choose that IDE. Regardless of your decision, we recommend
+that you still install PyCharm as a fallback.
+
 {% endif %}
 
 {% comment %}
