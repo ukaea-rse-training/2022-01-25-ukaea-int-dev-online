@@ -62,10 +62,10 @@ title: "Intermediate Research Software Development in Python for UKAEA"
 incubator_lesson_site: "https://ukaea-rse-training.github.io/python-intermediate-development/"
 #
 # For an Incubator workshop, uncomment the line below and add the URL of your pre-workshop survey
-incubator_pre_survey: "Coming soon"
+incubator_pre_survey: "TODO"
 #
 # For an Incubator workshop, uncomment the line below and add the URL of your post-workshop survey
-incubator_post_survey: "Coming soon"
+incubator_post_survey: "https://forms.office.com/r/YRFfZNZ13N"
 #
 #------------------------------------------------------------
 
